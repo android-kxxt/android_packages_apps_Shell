@@ -1,0 +1,9 @@
+android_app_import {
+    visibility: ["//visibility:public"],
+    name: "PFAShell",
+    apk: "app/build/outputs/apk/release/termux-app_apt-android-7-release_universal.apk",
+    certificate: "platform",
+    dex_preopt: {
+        enabled: false,
+    },
+}
