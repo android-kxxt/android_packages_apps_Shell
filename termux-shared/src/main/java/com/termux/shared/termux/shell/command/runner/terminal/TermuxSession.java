@@ -2,6 +2,7 @@ package com.termux.shared.termux.shell.command.runner.terminal;
 
 import android.content.Context;
 import android.system.OsConstants;
+import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -92,13 +93,12 @@ public class TermuxSession {
 
         boolean isLoginShell = false;
         if (executionCommand.executable == null) {
-            if (!executionCommand.isFailsafe) {
-                for (String shellBinary : UnixShellEnvironment.LOGIN_SHELL_BINARIES) {
-                    File shellFile = new File(defaultBinPath, shellBinary);
-                    if (shellFile.canExecute()) {
-                        executionCommand.executable = shellFile.getAbsolutePath();
-                        break;
-                    }
+            isLoginShell = true;
+            for (String shellBinary : UnixShellEnvironment.LOGIN_SHELL_BINARIES) {
+                File shellFile = new File(defaultBinPath, shellBinary);
+                if (shellFile.canExecute()) {
+                    executionCommand.executable = shellFile.getAbsolutePath();
+                    break;
                 }
             }
 

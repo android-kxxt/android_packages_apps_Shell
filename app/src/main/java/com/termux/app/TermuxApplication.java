@@ -60,7 +60,7 @@ public class TermuxApplication extends Application {
             }
 
             // Setup termux-am-socket server
-            TermuxAmSocketServer.setupTermuxAmSocketServer(context);
+            // TermuxAmSocketServer.setupTermuxAmSocketServer(context);
         } else {
             Logger.logErrorExtended(LOG_TAG, "Termux files directory is not accessible\n" + error);
         }
